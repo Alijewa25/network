@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import os
 from flask_cors import CORS
 import models
 
@@ -21,4 +22,6 @@ def index():
     return render_template('index.html', posts=posts)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', '5000'))
+    debug = os.environ.get('FLASK_DEBUG', '0') not in ('0', 'false', 'False')
+    app.run(host='0.0.0.0', port=port, debug=debug)
