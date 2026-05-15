@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Network</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 12px; background-color: #fff; color: #111; }
+        .top { display: flex; align-items: center; gap: 12px; }
+        form.inline { display: flex; gap: 8px; align-items: center; }
+        form.inline input[type="text"] { padding: 6px 8px; font-size: 14px; }
+        form.inline button { padding: 6px 10px; font-size: 14px; cursor: pointer; }
+        .posts { margin-top: 12px; }
+        .post { padding: 6px 0; }
+        .post strong { margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h2 style="margin:0">Social Network</h2>
+        <div style="flex:1"></div>
+    </div>
+
+    <form class="inline" method="POST">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" placeholder="Name" required>
+        <label for="post">Post Content</label>
+        <input id="post" type="text" name="post" placeholder="Post Content" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post">
+                <strong>{{ post.name }}:</strong> {{ post.content }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
